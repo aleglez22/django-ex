@@ -1,0 +1,111 @@
+{% extends "index/base.html" %}
+
+
+{% block body %}
+<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>
+							Id
+						</th>
+						<th>
+							Estado_inicial
+						</th>
+						<th>
+							Falla
+						</th>
+						<th>
+							Costo_reparacion
+						</th>
+						<th>
+							Costo_revision
+						</th>
+						<th>
+							Notas
+						</th>
+						<th>
+							Fecha_ofrecida
+						</th>
+						<th>
+							Accesorios
+						</th>
+						<th>
+							Limite_garantia
+						</th>
+						<th>
+							Informe_tecnico
+						</th>
+						<th>
+							Tecnico
+						</th>
+						<th>
+							Equipo
+						</th>
+						<th>
+							Cliente
+						</th>
+						<th>
+							Estado
+						</th>
+
+					</tr>
+				</thead>
+				<tbody>
+
+				{% if all_ordenes %}
+				
+	{% for orden in all_ordenes %}
+
+					<tr class="success">
+						<td>
+							id: {{ orden.pk }}
+						</td>
+						<td>
+							{{ orden.Estado_inicial }}
+						</td>
+						<td>
+							{{ orden.Falla }}
+						</td>
+						<td>
+							{{ orden.Costo_reparacion }}
+						</td>
+						<td>
+							{{ orden.Costo_revision }}
+						</td>
+						<td>
+							{{ orden.Notas }}
+						</td>
+						<td>
+							{{ orden.Fecha_ofrecida }}
+						</td>
+						<td>
+							{{ orden.Accesorios }}
+						</td>
+						<td>
+							{{ orden.Limite_garantia }}
+						</td>
+						<td>
+							{{ orden.Informe_tecnico }}
+						</td>
+						<td>
+							{{ orden.Tecnico }}
+						</td>
+						<td>
+							{{ orden.Equipo }}
+						</td>
+						<td>
+							{{ orden.Cliente }}
+						</td>
+						<td>
+							{{ orden.Estado }}
+						</td>
+					</tr>
+	{% endfor %}
+	{% else %}
+	<h2>No hay registros de ordenes</h2>
+	{% endif %}
+				</tbody>
+			</table>
+{% endblock body %}
+
+					

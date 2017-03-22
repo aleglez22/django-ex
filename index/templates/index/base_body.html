@@ -1,0 +1,32 @@
+{% extends "index/base.html" %}
+
+
+
+{% block body %} 
+
+			<div class="row">
+				<div class="col-md-6">
+
+				{% block izquierda %}
+				{% endblock izquierda %}
+
+				</div>
+				<div class="col-md-6">
+
+				{% block derecha %} 
+			    
+				{% endblock derecha %} 
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					
+
+					{% block abajo %}
+			        {% endblock abajo %}
+
+				</div>
+			</div>
+
+            
+{% endblock body %}

@@ -1,0 +1,109 @@
+{% extends "index/base_body.html" %}
+
+					{% block equipotab %}
+						<li class="active">
+					{% endblock equipotab %}
+
+
+
+					{% block btnagregar %}
+
+							 <form class="navbar-form navbar-left" action=" {% url 'index:Add-Equipo' %} ">
+						<button   class="btn btn-default">
+						 Agregar
+						</button>
+					</form>
+					{% endblock btnagregar %}
+
+
+				{% block derecha %}
+					
+
+				{% endblock derecha %}
+
+
+				
+
+					{% block izquierda %} 
+
+					<h3 class="text-center">
+						Nuevos Equipos
+					</h3>
+					<ul>
+					<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+	
+
+					        <th>id</th>
+					        <th>Marca</th>
+					        <th>Modelo</th>
+					        <th>Serial</th>
+					        <th>Cliente</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {% for equipo in ultimos  %}
+					    	<tr>
+					    	<td>{{equipo.pk}}</td>
+					        <td>{{equipo.Marca}}</td>
+					        <td>{{equipo.Modelo}}</td>
+					        <td>{{equipo.Serial}}</td>
+					        <td>{{equipo.Cliente}}</td>
+
+							<td><a href=" {% url "index:Eliminar-Equipo" equipo.id %} ">eliminar</a></td>				      
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					</div>
+
+					</ul>
+				</div>
+					{% endblock izquierda %} 
+					
+				
+
+			{% block abajo %}
+				
+			
+			<h3 class="text-center">
+				EQUIPOS
+			</h3>
+
+			<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+	
+
+					        <th>id</th>
+					        <th>Marca</th>
+					        <th>Modelo</th>
+					        <th>Serial</th>
+					        <th>Cliente</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {% for equipo in all_equipos  %}
+					    	<tr>
+					    	<td>{{equipo.pk}}</td>
+					        <td>{{equipo.Marca}}</td>
+					        <td>{{equipo.Modelo}}</td>
+					        <td>{{equipo.Serial}}</td>
+					        <td>{{equipo.Cliente}}</td>
+
+							<td><a href=" {% url "index:Eliminar-Equipo" equipo.id %} ">eliminar</a></td>				      
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					</div>
+
+			 {% endblock abajo %}
+			

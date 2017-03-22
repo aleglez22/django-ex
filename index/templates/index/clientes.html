@@ -1,0 +1,126 @@
+{% extends "index/base_body.html" %}
+{% load staticfiles %}
+					{% block clientetab %}
+						<li class="active">
+					{% endblock clientetab %}
+
+				{% block izquierda %}
+					<h3 class="text-center">
+						Nuevos Clientes
+					</h3>
+					<ul>
+					
+					<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+
+					        <th>id</th>
+					        <th>Nombre</th>
+					        <th>Apellido</th>
+					        <th>Gastos</th>
+					        <th>Cedula</th>
+					        <th>Gasto_acumulado</th>
+					        <th>Telefono1</th>
+					        <th>Telefono2</th>
+					      </tr>
+					      
+					    </thead>
+					    <tbody>
+					    {% for cliente in ultimos  %}
+					    	<tr>
+					    	<td>{{cliente.pk}}</td>
+					        <td>{{cliente.Nombre}}</td>
+					        <td>{{cliente.Apellido}}</td>
+					        <td>{{cliente.Costo_reparacion}}</td>
+					        <td>{{cliente.Cedula	}}</td>
+					        <td>{{cliente.Gasto_acumulado}}</td>
+					        <td>{{cliente.Telefono1}}</td>
+					        <td>{{cliente.Telefono2}}</td>
+					        <td><a href=" {% url "index:Editar-Cliente" cliente.id %} "> <img src="{% static 'images/icono_editar.png' %}" width="15" height="15"></a></td>
+
+							<td><a href=" {% url "index:Eliminar-Cliente" cliente.id %} "><img src="{% static 'images/icono_eliminar.png' %}" width="15" height="15"></a></td>				      
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					  
+				</div>
+				</ul>
+
+				{% endblock izquierda %}
+
+
+
+				{% block btnagregar %}
+
+							 <form class="navbar-form navbar-left" action=" {% url 'index:Add-Cliente' %} ">
+						<button   class="btn btn-default">
+						 Agregar
+						</button>
+					</form>
+					{% endblock btnagregar %}
+
+
+
+
+
+					{% block derecha %} 
+
+					
+					{% endblock derecha %} 
+					
+				
+
+			{% block abajo %}
+			<br><br><br>
+			<h2 class="text-center">
+						Lista de Clientes 
+						<br>
+						<br>
+			</h2>
+
+			
+				<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+
+					        <th>id</th>
+					        <th>Nombre</th>
+					        <th>Apellido</th>
+					        <th>Gastos</th>
+					        <th>Cedula</th>
+					        <th>Gasto_acumulado</th>
+					        <th>Telefono1</th>
+					        <th>Telefono2</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {% for cliente in all_clientes  %}
+					    	<tr>
+					    	<td> <a href=" {% url "index:Equipos-Cliente" cliente.id %} ">id:{{cliente.pk}}</a></td>
+					        <td>{{cliente.Nombre}}</td>
+					        <td>{{cliente.Apellido}}</td>
+					        <td>{{cliente.Costo_reparacion}}</td>
+					        <td>{{cliente.Cedula	}}</td>
+					        <td>{{cliente.Gasto_acumulado}}</td>
+					        <td>{{cliente.Telefono1}}</td>
+					        <td>{{cliente.Telefono2}}</td>
+					        <td><a href=" {% url "index:Editar-Cliente" cliente.id %} ">editar</a></td>
+							<td><a href=" {% url "index:Eliminar-Cliente" cliente.id %} ">eliminar</a></td>				      
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					</div>
+			
+			
+			
+
+			 {% endblock abajo %}
+			

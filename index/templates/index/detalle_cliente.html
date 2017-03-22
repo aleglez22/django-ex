@@ -1,0 +1,111 @@
+{% extends "index/base_body.html" %}
+{% load staticfiles %}
+					{% block equipotab %}
+						<li class="active">
+					{% endblock equipotab %}
+
+				{% block izquierda %}
+					<h3 class="text-center">
+						Equipos del cliente {{cliente}}  
+					</h3>
+					<ul>
+					<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+	
+
+					        <th>id</th>
+					        <th>Tipo</th>
+					        <th>Marca</th>
+					        <th>Modelo</th>
+					        <th>Serial</th>
+
+					        
+					        
+					      </tr>
+					    </thead>
+					    <tbody>
+					   {% for equipo in all_equipos  %}
+					    	<tr>
+					    	<td>{{equipo.pk}}</td>
+					    	<td>{{equipo.Tipo}}</td>
+					        <td>{{equipo.Marca}}</td>
+					        <td>{{equipo.Modelo}}</td>
+					        <td>{{equipo.Serial}}</td>
+
+					       
+				
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					</div>
+
+					</ul>
+				</div>
+
+
+				
+				{% endblock izquierda %}
+
+
+				
+
+					{% block derecha %} 
+
+					
+
+					{% endblock derecha %} 
+					
+				
+
+			{% block abajo %}
+				<br><br><br><br><br>
+			<h3 class="text-center">
+						Ordenes del cliente {{cliente}}  
+					</h3>
+					<ul>
+					<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+					      
+					        <th>id</th>
+					        <th>Equipo</th>
+					        <th>Costo</th>
+					        <th>Estado</th>
+					        <th>Falla</th>
+					        <th>Creación</th>
+					        <th>editar</th>
+					        <th>eliminar</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					   {% for orden in ordenes  %}
+					    	<tr>
+					    	<td>{{orden.pk}}</td>
+					        <td>{{orden.Equipo}}</td>
+					        <td>{{orden.Costo_reparacion}}</td>
+					        <td>{{orden.Estado_inicial	}}</td>
+					        <td>{{orden.Falla}}</td>
+					        <td>{{orden.Fecha_creacion}}</td>
+					        <td><a href=" {% url "index:Editar-Ordenes" orden.id %}"> <img src="{% static 'images/icono_editar.png' %}" width="15" height="15"> </a></td>
+
+							<td><a href=" {% url "index:Eliminar-Ordenes" orden.id %} "> <img src="{% static 'images/icono_eliminar.png' %}" width="15" height="15"></a></td>				      
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					</div>
+
+					</ul>
+				</div>
+
+
+			 {% endblock abajo %}
+			

@@ -1,0 +1,91 @@
+{% extends "index/base_body.html" %}
+
+					{% block tecnicotab %}
+						<li class="active">
+					{% endblock tecnicotab %}
+
+				{% block izquierda %}
+					<h3 class="text-center">
+						Tecnicos
+					</h3>
+					<ul>
+					<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+	
+
+					        <th>id</th>
+					        <th>Nombre</th>
+					        <th>Apellido</th>
+					        <th>Fecha_ingreso</th>
+					        
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {% for tecnico in all_tecnicos  %}
+					    	<tr>
+					    	<td>{{tecnico.pk}}</td>
+					        <td>{{tecnico.Nombre}}</td>
+					        <td>{{tecnico.Apellido}}</td>
+					        <td>{{tecnico.Fecha_ingreso}}</td>
+					       
+
+						{# <td><a href=" {% url "index:Eliminar-Tecnico" tecnico.pk %} ">eliminar</a></td>				       #} 
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					</div>
+
+					</ul>
+				</div>
+
+				{% endblock izquierda %}
+
+
+				{% block btnagregar %}
+
+							 <form class="navbar-form navbar-left" action=" {% url 'index:Add-Tecnico' %} ">
+						<button   class="btn btn-default">
+						 Agregar
+						</button>
+					</form>
+					{% endblock btnagregar %}
+
+					{% block derecha %} 
+
+					
+					<div class="row">
+						<div class="col-md-6">
+							
+				<form action=" {% url "index:Add-Tecnico" %} ">
+				
+				{% csrf_token %}
+
+					<div class="form-group">
+						<button type="submit" action class="btn btn-lg btn-info"> Agregar Tecnico </button>
+				 	</div>
+
+				</form>
+							
+
+						</div>
+						<div class="col-md-6">
+							
+						</div>
+					</div>
+					
+
+					{% endblock derecha %} 
+					
+				
+
+			{% block abajo %}
+				
+			
+
+			 {% endblock abajo %}
+			

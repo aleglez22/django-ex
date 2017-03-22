@@ -1,0 +1,61 @@
+{% extends "index/base_body.html" %}
+
+					
+
+{% block izquierda %} 
+
+					<h2 class="text-center">
+						<b>Crear / Modificar Orden</b>
+						<br><br><br><br>
+						<br>
+					</h2>
+					
+
+<form action="" method="post" enctype="multipart/form-data" role="form">
+	{% csrf_token %}	
+
+<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+				{% include 'index/form_template.html' %}	
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+		</div>
+
+
+	
+
+				<div class="form-group">
+				<button type="submit" class="btn btn-info">
+						Agregar
+					</button>
+</form>
+{% endblock izquierda %} 
+
+ {% block derecha %}
+ 	
+<form action="{% url 'index:Add-Cliente-From-Orden' %}">
+	{% csrf_token %}			
+		
+				<div class="form-group">
+				<button type="submit" class="btn btn-info">
+						Agregar Cliente
+					</button>
+</form>
+
+<form action="{% url 'index:Add-Equipo-From-Orden' %}" >
+	{% csrf_token %}			
+		
+				<div class="form-group">
+				<button type="submit" class="btn btn-info">
+						Agregar Equipo
+					</button>
+</form>
+
+ {% endblock derecha %}
+
+

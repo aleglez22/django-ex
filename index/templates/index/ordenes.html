@@ -1,0 +1,197 @@
+
+{% extends "index/base_body.html" %}
+{% load staticfiles %}
+
+
+
+					{% block ordentab %}
+						<li class="active">
+					{% endblock ordentab %}
+
+				{% block izquierda %}
+					<h3 class="text-center">
+						Ordenes Pendientes
+					</h3>
+					<ul>
+					
+					<form method="POST" action="" >
+					<div class="table-responsive">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+					      
+					        <th>id</th>
+					        <th>Equipo</th>
+					        <th>Cliente</th>
+					        <th>Costo</th>
+					        <th>Estado</th>
+					        <th>Falla</th>
+					        <th>Creación</th>
+					        <th>editar</th>
+					        <th>eliminar</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {% for orden in pendientes  %}
+					    	<tr>
+					    	<td>{{orden.pk}}</td>
+					        <td>{{orden.Equipo}}</td>
+					        <td>{{orden.Cliente}}</td>
+					        <td>{{orden.Costo_reparacion}}</td>
+					        <td>{{orden.Estado_inicial	}}</td>
+					        <td>{{orden.Falla}}</td>
+					        <td>{{orden.Fecha_creacion}}</td>
+					        <td><a href=" {% url "index:Editar-Ordenes" orden.id %}"> <img src="{% static 'images/icono_editar.png' %}" width="15" height="15"> </a></td>
+
+							<td><a href=" {% url "index:Eliminar-Ordenes" orden.id %} "> <img src="{% static 'images/icono_eliminar.png' %}" width="15" height="15"></a></td>				      
+					      </tr>
+
+					    {% endfor %}
+					      
+					    </tbody>
+					  </table>
+					  </div>
+					
+					</form>
+
+					</ul>
+				</div>
+
+				{% endblock izquierda %}
+
+
+				
+
+					{% block derecha %} 
+
+					
+
+					{% endblock derecha %} 
+					
+
+
+					{% block btnagregar %}
+
+							 <form  class="navbar-form navbar-left" action=" {% url 'index:Agregar-Cliente-Orden' %} ">
+						<button   class="btn btn-default">
+						 Agregar
+						</button>
+					</form>
+
+					<form class="navbar-form navbar-left" action=" {% url 'index:Lista-Ordenes' %}">
+						<button   class="btn btn-default">
+						 Lista Ordenes
+						</button>
+					</form>
+
+					
+					{% endblock btnagregar %}
+				
+
+			{% block abajo %}
+			<h3 class="text-center">
+						Exportar registro
+					</h3>
+
+					<div class="row">
+				<div class="col-md-4">
+				<form method="post" name="redirect_to_orden" action=" {% url "index:Redirect-To-Orden" %} ">
+				
+				{% csrf_token %}
+
+					<div class="form-group">
+						<label for="id_orden"> 
+						ID Orden
+						</label>
+						<input type="text" class="form-control" id="id_orden" name="id_orden" />
+						<button type="submit" class="btn btn-default"  > Buscar </button>
+				 	</div>
+
+				</form>
+
+				</div>
+
+
+
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#fecha_inicial" ).datepicker();
+    $( "#fecha_inicial" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $( "#fecha_final" ).datepicker();
+    $( "#fecha_final" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  } );
+  </script>
+
+
+
+<script>
+window.onload = function() {
+    if (window.location.hash === "#no") {
+        alertify.error("No existe ese cliente",4000);
+    }
+};
+    
+    </script>
+				<div class="col-md-4">
+				<form action=" {% url 'index:Exportar-Excel' %}" method="POST">
+
+							 
+							 {% csrf_token %}
+							 <label for="fecha_inicial"> 
+						      Desde
+							</label>
+							 <input type="text" class="form-control" name="fecha_inicial" id="fecha_inicial" placeholder="AAAA-MM_DD"> 
+
+							  <label for="fecha_final"> 
+						      Hasta
+							</label>
+							 <input type="text" class="form-control" name="fecha_final"  id="fecha_final" placeholder="AAAA-MM_DD"> 
+
+							 	<button type="submit" action class="btn btn-lg btn-info">
+								exportar
+							</button>
+
+							 </form>
+
+
+
+
+
+				</div>
+				<div class="col-md-4">
+
+				<form action=" {% url 'index:Agregar-Cliente-Orden' %}" method="POST">
+							 
+							 {% csrf_token %}
+
+
+							 <label for="txtcliente"> 
+							Agregar Cliente a Orden
+							</label>
+							<input type="text" class="form-control" id="txtcliente" name="txtcliente" />
+
+							 <button type="submit" action class="btn btn-lg btn-info">
+								Agregar Orden
+							</button>
+
+							 </form>
+
+
+				</div>
+			</div>
+
+			
+	
+
+
+					
+			
+
+
+			 {% endblock abajo %}
+			

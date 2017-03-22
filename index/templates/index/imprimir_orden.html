@@ -1,0 +1,189 @@
+{% extends "index/base.html" %}
+{% load staticfiles %}
+{% block body %}
+
+<script type="text/javascript">
+	window.onload = function() {
+  window.print();
+};
+</script>
+
+<table style=" height: 100px;width: 780px; margin-left: auto; margin-right: auto;" border="1">
+<tbody>
+<tr>
+<td style="width: 241.236px;"><a> <img src="{% static 'images/logo2.jpg' %}" width="220" height="145"></a> &nbsp;</td> </td>
+<td style="width: 556.764px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<!-- DivTable.com -->
+
+
+<table style="height: 238px; width: 780px; margin-left: auto; margin-right: auto;" border="1">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 369.542px; height: 20px;  text-align: center; color: red;"><h4> <b>ORDEN DE INGRESO </b></h4></td>
+<td style="width: 408.458px; height: 20px; text-align: left;" colspan="3"> 
+&nbsp;Orden No:<h4>&nbsp;<b>{{orden.pk}}</b></h4></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 369.542px; height: 24px;">&nbsp;</td>
+<td style="width: 408.458px; height: 24px; text-align: left;" colspan="3">Fecha: &nbsp; {{orden.Fecha_creacion}}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 369.542px; height: 20px;">Realizada por: {{orden.Tecnico.Nombre}}</td>
+<td style="width: 408.458px; height: 20px; text-align: left;" colspan="3">Hora: &nbsp; {{hora}}</td>
+</tr>
+<tr style="height: 25px;">
+<td style="width: 369.542px; height: 25px;">&nbsp;</td>
+<td style="width: 408.458px; height: 25px; text-align: left;" colspan="3">Solicitante: &nbsp; {{orden.Cliente.Nombre}} {{orden.Cliente.Apellido}}</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 778px; height: 24px;" colspan="4"><b>DATOS DEL CLIENTE</b>&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 369.542px; height: 24px;">
+<p>&nbsp; Nombre: {{orden.Cliente.Nombre}} {{orden.Cliente.Apellido}}</p>
+<p>Direccion: {{orden.Cliente}} direccion</p>
+<p>Telefono: {{orden.Cliente.Telefono2}} </p>
+</td>
+<td style="width: 408.458px; height: 24px;" colspan="3">
+<p>Celular: {{orden.Cliente.Telefono1}}</p>
+<p>CC / RUC: {{orden.Cliente.pk}}</p>
+<p>email: {{orden.Cliente.Telefono2}} email</p>
+</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 778px; height: 24px;" colspan="4"><b>DATOS DEL EQUIPO</b> : {{orden.Equipo.Tipo}}&nbsp;</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 369.542px; height: 24px;">
+<p>Marca: {{orden.Equipo.Marca}}</p>
+</td>
+<td style="width: 125.458px; height: 24px;">
+<p>Modelo: {{orden.Equipo.Modelo}}</p>
+</td>
+<td style="width: 157px; height: 24px;">
+<p>No. Serie: {{orden.Equipo.Serial}}</p>
+</td>
+<td style="width: 126px; height: 24px;">
+<p>No. parte</p>
+</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 495px; height: 24px;" colspan="2">Da&ntilde;o Reportado</td>
+<td style="width: 283px; height: 59.5555px;" colspan="2" rowspan="2">
+<p>Accesorios / perif&eacute;ricos incluidos</p>
+<p>{{orden.Accesorios}}</p>
+</td>
+</tr>
+<tr style="height: 35.5555px;">
+<td style="width: 495px; height: 83.5555px;" colspan="2" rowspan="3">{{orden.Falla}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 283px; height: 24px; border-color: #FFFFFF;" colspan="2">Observaciones / adicionales</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 283px; height: 24px;" colspan="2">{{orden.Notas}}</td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 778px; height: 24px;" colspan="4"><b>CONDICIONES DE SERVICIO</b>&nbsp;</td>
+</tr>
+<tr style="height: 55px;">
+<td style="width: 369.542px; height: 55px; font-size: 11px; border-color: #ffffff;">
+<p>&nbsp;COBERTURA</p>
+<p>El servicio realizado por nuestra empresa a trav&eacute;s de esta Orden de Servicio cubre:
+El servicio realizado por nuestra empresa a trav&eacute;s de esta Orden de Servicio cubre:
+El servicio realizado por nuestra empresa a trav&eacute;s de esta Orden de Servicio cubre:
+El servicio realizado por nuestra empresa a trav&eacute;s de esta Orden de Servicio cubre:
+El servicio realizado por nuestra empresa a trav&eacute;s de esta Orden de Servicio cubre:
+</p>
+
+</td>
+<td style="width: 408.458px; height: 55px; font-size: 11px; border-color: #ffffff;" colspan="3">
+<p>&nbsp;EXCLUSIONES</p>
+<p>1 Software y o programa Software y o programaSoftware y o programaSoftware y o programaSoftware y o programaSoftware y o programaSoftware y o programaSoftware y o programaSoftware y o programaSoftware y o programaSoftware y o programa  </p>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr style="height: 30px;">
+<td style="width: 369.542px; height: 30px; border-color: #ffffff;">
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _________________________________</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{orden.Cliente.Nombre}} {{orden.Cliente.Apellido}}</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Ci: {{orden.Cliente.pk}}</p>
+</td>
+<td style="width: 408.458px; height: 55px; border-color: #ffffff;" colspan="3">
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Atendido por</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{orden.Tecnico.Nombre}}</p>
+<p>&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+<table style="width: 780px; height: 250px; margin-left: auto; margin-right: auto;" border="1">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 241px; height: 150px;" rowspan="6"><a> <img src="{% static 'images/logo2.jpg' %}" width="220" height="145"></a> &nbsp;</td>
+<td style="width: 92px; height: 20px; text-align: right;"><b>&nbsp;Fecha&nbsp; </b></td>
+<td style="width: 183px; height: 20px;">&nbsp;{{ orden.Equipo.Fecha_creacion }} </td>
+<td style="width: 68px; height: 20px; text-align: center;"><b>Hora</b></td>
+<td style="width: 195px; height: 20px;"> &nbsp; {{hora}}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 92px; height: 20px; text-align: right;">&nbsp;<b>Cliente&nbsp;</b></td>
+<td style="width: 446px; height: 20px;" colspan="3">&nbsp;{{ orden.Cliente.Nombre }}  {{ orden.Cliente.Apellido }}  &nbsp;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 92px; height: 20px; text-align: right;"><b>&nbsp;Tel&eacute;fonos&nbsp;</b></td>
+<td style="width: 183px; height: 20px;">&nbsp; {{ orden.Cliente.Telefono2 }}</td>
+<td style="width: 68px; height: 20px; text-align: center;"><b>Celular</b></td>
+<td style="width: 195px; height: 20px;">&nbsp;{{ orden.Cliente.Telefono1 }}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 92px; height: 20px; text-align: right;">&nbsp;<b>Marca&nbsp;</b></td>
+<td style="width: 183px; height: 20px;">&nbsp;{{ orden.Equipo.Marca }}</td>
+<td style="width: 68px; height: 20px; text-align: center;"><b>Modelo</b></td>
+<td style="width: 195px; height: 20px;">&nbsp;{{ orden.Equipo.Modelo }}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 92px; height: 20px; text-align: right;">&nbsp;<b>Serie&nbsp;</b></td>
+<td style="width: 446px; height: 20px;" colspan="3">&nbsp;&nbsp; {{ orden.Equipo.Serial }}&nbsp;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 92px; height: 20px; text-align: right;">&nbsp;<b>Descripci&oacute;n&nbsp;</b></td>
+<td style="width: 446px; height: 20px;" colspan="3">&nbsp;&nbsp;{{ orden.Notas }}&nbsp;</td>
+</tr>
+
+<tr style="height: 20px;">
+
+<td style="font-size: 20px; width: 241px; height: 20px; text-align: center; color: blue; right">&nbsp;   <i>{{ orden.pk }}</i>    </td>
+
+
+<td style="width: 92px; height: 20px; text-align: right;">&nbsp;<b>Accesorios&nbsp;</b></td>
+<td style="width: 446px; height: 20px;" colspan="3">&nbsp;{{ orden.Accesorios }}&nbsp;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 241px; height: 20px; text-align: center;">&nbsp;<b>Recibido por</b></td>
+<td style="width: 92px; height: 20px; text-align: right;"><b>&nbsp;Da&ntilde;o&nbsp;</b></td>
+<td style="width: 446px; height: 20px;" colspan="3">&nbsp;{{ orden.Falla }}&nbsp;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 241px; height: 20px; text-align: center;">&nbsp; {{ orden.Tecnico.Nombre }}</td>
+<td style="width: 92px; height: 20px; text-align: right;"><b>&nbsp;T&eacute;cnico&nbsp;</b></td>
+<td style="width: 446px; height: 20px;" colspan="3">&nbsp;{{ orden.Tecnico.Nombre }}&nbsp;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 241px; height: 20px; text-align: right;">&nbsp;<b>Trabajo realizado&nbsp;</b></td>
+<td style="width: 538px; height: 20px;" colspan="4">&nbsp;&nbsp;{{ orden.Informe_tecnico }}&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<!-- DivTable.com -->
+
+{% endblock %}
